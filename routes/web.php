@@ -17,6 +17,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('about', function () {
+    return 'About Page';
+});
+
+Route::get('user/{id}', function ($id) {
+    return 'User' .$id;
+});
+
+Route::get('user/{name?}', function ($name = null) {
+    return $name;
+});
+
+Route::get('contacts', function (){
+    $name = request('name');
+
+    return view('contacts', ['name' => $name]);
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
